@@ -32,7 +32,6 @@ public partial class MainWindow : Window
     public void Tick(object? sender, EventArgs args)
     {
         _bitmap.Lock();
-
         for (int y = 0; y < _bitmap.PixelWidth; y++)
         {
             for (int x = 0; x < _bitmap.PixelHeight; x++)
