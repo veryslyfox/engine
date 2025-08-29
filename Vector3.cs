@@ -26,6 +26,10 @@ struct Vector3
     {
         return new Vector3(v.X * m.M11 + v.Y * m.M12 + v.Z * m.M13, v.X * m.M21 + v.Y * m.M22 + v.Z * m.M23, v.X * m.M31 + v.Y * m.M32 + v.Z * m.M33) + m.Shift;
     }
+    public static Vector3 operator -(Vector3 v)
+    {
+        return new Vector3(-v.X, -v.Y, -v.Z);
+    }
     public static Vector3 Cross(Vector3 a, Vector3 b)
     {
         return a | b;
