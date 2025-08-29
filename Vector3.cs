@@ -22,7 +22,7 @@ struct Vector3
     {
         return new Vector3(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
     }
-    public static Vector3 operator *(Vector3 v, Matrix m)
+    public static Vector3 operator *(Vector3 v, Matrix3 m)
     {
         return new Vector3(v.X * m.M11 + v.Y * m.M12 + v.Z * m.M13, v.X * m.M21 + v.Y * m.M22 + v.Z * m.M23, v.X * m.M31 + v.Y * m.M32 + v.Z * m.M33) + m.Shift;
     }
