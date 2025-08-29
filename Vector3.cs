@@ -30,6 +30,22 @@ struct Vector3
     {
         return new Vector3(-v.X, -v.Y, -v.Z);
     }
+    public static Point3 operator !(Vector3 v)
+    {
+        return new Point3(v.X, v.Y, v.Z);
+    }
+    public static Vector3 operator *(Vector3 v, double s)
+    {
+        return new Vector3(v.X * s, v.Y * s, v.Z * s);
+    }
+    public static Vector3 operator /(Vector3 v, double s)
+    {
+        return new Vector3(v.X / s, v.Y / s, v.Z / s);
+    }
+    public static Vector3 operator ~(Vector3 v)
+    {
+        return v / v.Length;
+    }
     public static Vector3 Cross(Vector3 a, Vector3 b)
     {
         return a | b;
@@ -41,4 +57,5 @@ struct Vector3
     public double X { get; }
     public double Y { get; }
     public double Z { get; }
+    public double Length { get => Sqrt(X * X + Y * Y + Z * Z); }
 }

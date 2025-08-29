@@ -28,7 +28,11 @@ struct Point3
     }
     public static Vector3 operator <(Point3 a, Point3 b)
     {
-        return -(a > b);
+        return new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+    }
+    public static Vector3 operator !(Point3 p)
+    {
+        return new Vector3(p.X, p.Y, p.Z);
     }
     public double X { get; }
     public double Y { get; }
