@@ -58,4 +58,5 @@ struct Vector3
     public double Y { get; }
     public double Z { get; }
     public double Length { get => Sqrt(X * X + Y * Y + Z * Z); }
+    public double SquaredLength { get => X * X + Y * Y + Z * Z; }
 }
