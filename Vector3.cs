@@ -30,9 +30,9 @@ struct Vector3
     {
         return new Vector3(-v.X, -v.Y, -v.Z);
     }
-    public static Point3 operator !(Vector3 v)
+    public static Vector3 operator !(Vector3 v)
     {
-        return new Point3(v.X, v.Y, v.Z);
+        return v / v.SquaredLength;
     }
     public static Vector3 operator *(Vector3 v, double s)
     {

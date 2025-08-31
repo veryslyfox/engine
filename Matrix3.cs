@@ -1,6 +1,6 @@
 struct Matrix3
 {
-    public Matrix3(double m11, double m12, double m13, double m21, double m22, double m23, double m31, double m32, double m33, double s1, double s2, double s3, double scale)
+    public Matrix3(double m11, double m12, double m13, double m21, double m22, double m23, double m31, double m32, double m33, Vector3 shift)
     {
         M11 = m11;
         M12 = m12;
@@ -11,7 +11,7 @@ struct Matrix3
         M31 = m31;
         M32 = m32;
         M33 = m33;
-        Shift = new Vector3(s1, s2, s3);
+        Shift = shift;
     }
 
     public double M11 { get; }
@@ -24,4 +24,8 @@ struct Matrix3
     public double M32 { get; }
     public double M33 { get; }
     public Vector3 Shift { get; }
+    public static Matrix3 operator ~(Matrix3 m)
+    {
+        return new(m.M11, m.M12, m.M13, m.M21, m.M22, m.M23, m.M31, m.M32, m.M33, new Vector3(0, 0, 0));
+    }
 }
