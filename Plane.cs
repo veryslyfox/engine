@@ -5,22 +5,23 @@ class Plane
         Vector = vector;
     }
     public Vector3 Vector { get; }
+    public bool Orientation { get; }
     public static Plane operator *(Plane p, Matrix3 m)
     {
         var v = p.Vector * ~m;
         return new Plane(v * (1 + ~v * m.Shift));
     }
-    public ComparsionResult Compare(Point3 p)
+    public int Compare(Point3 p)
     {
         var i = !p * !Vector;
         if (i < 1)
         {
-            return ComparsionResult.Lower;
+            return -(Orientation ? 1 : -1);
         }
         if (i == 1)
         {
-            return ComparsionResult.On;
+            return 0;
         }
-        return ComparsionResult.Higher;
+        return (Orientation ? 1 : -1);
     }
 }

@@ -9,6 +9,14 @@ struct Triangle
         Area = ScaledNormal.Length / 2;
         Normal = ~ScaledNormal;
     }
+    public Triangle Cut(Plane plane)
+    {
+
+    }
+    public (Triangle, Triangle) CutT(Plane plane)
+    {
+
+    }
     public Point3 A { get; }
     public Point3 B { get; }
     public Point3 C { get; }
