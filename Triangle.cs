@@ -21,15 +21,15 @@ struct Triangle
         var t_bc = bv / (bv - cv);
         return new Triangle((Point3)(!B * (1 - t_ba) + !A * t_ba), B, (Point3)(!B * (1 - t_bc) + !C * t_bc));
     }
-    public Triangle Cut3(Plane plane, double av, double bv, double cv)
+    public (Triangle, Triangle) Cut3(Plane plane, double av, double bv, double cv)
     {
-
+        
     }
-    public (Triangle, Triangle) Cut4(Plane plane, double av, double bv, double cv)
+    public Triangle Cut4(Plane plane, double av, double bv, double cv)
     {
         var t_ca = cv / (cv - av);
         var t_cb = cv / (cv - av);
-        return new Triangle((Point3)(!C * (1 - t_ba) + !A * t_ba), (Point3)(!C * (1 - t_bc) + !B * t_bc), C);
+        return new Triangle((Point3)(!C * (1 - t_ca) + !A * t_ca), (Point3)(!C * (1 - t_cb) + !B * t_cb), C);
     }
     public (Triangle, Triangle) Cut5(Plane plane, double av, double bv, double cv)
     {
