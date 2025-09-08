@@ -9,11 +9,33 @@ struct Triangle
         Area = ScaledNormal.Length / 2;
         Normal = ~ScaledNormal;
     }
-    public Triangle Cut(Plane plane)
+    public Triangle Cut1(Plane plane, double av, double bv, double cv)
+    {
+        var t_ab = av / (av - bv);
+        var t_ac = av / (av - cv);
+        return new Triangle(A, (Point3)(!A * (1 - t_ab) + !B * t_ab), (Point3)(!A * (1 - t_ab) + !B * t_ab));
+    }
+    public Triangle Cut2(Plane plane, double av, double bv, double cv)
+    {
+        var t_ba = bv / (bv - av);
+        var t_bc = bv / (bv - cv);
+        return new Triangle((Point3)(!B * (1 - t_ba) + !A * t_ba), B, (Point3)(!B * (1 - t_bc) + !C * t_bc));
+    }
+    public Triangle Cut3(Plane plane, double av, double bv, double cv)
     {
 
     }
-    public (Triangle, Triangle) CutT(Plane plane)
+    public (Triangle, Triangle) Cut4(Plane plane, double av, double bv, double cv)
+    {
+        var t_ca = cv / (cv - av);
+        var t_cb = cv / (cv - av);
+        return new Triangle((Point3)(!C * (1 - t_ba) + !A * t_ba), (Point3)(!C * (1 - t_bc) + !B * t_bc), C);
+    }
+    public (Triangle, Triangle) Cut5(Plane plane, double av, double bv, double cv)
+    {
+
+    }
+    public (Triangle, Triangle) Cut6(Plane plane, double av, double bv, double cv)
     {
 
     }
