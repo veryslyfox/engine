@@ -2,12 +2,11 @@ using System.Collections.Generic;
 
 class Layout
 {
-    public Layout(IEnumerable<Triangle> triangles)
+    public Layout(IEnumerable<Triangle3> triangles)
     {
         Triangles = triangles;
     }
-    public IEnumerable<Triangle> Triangles { get; }
-    //TODO: Rewrite it with ranges
+    public IEnumerable<Triangle3> Triangles { get; }
     public Layout Cut(Plane3 plane)
     {
         

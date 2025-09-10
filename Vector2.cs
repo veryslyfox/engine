@@ -45,6 +45,10 @@ struct Vector2
     {
         return a * b;
     }
+    public static double operator |(Vector2 a, Vector2 b)
+    {
+        return a.X * b.Y - a.Y * b.X;
+    }
     public double X { get; }
     public double Y { get; }
     public double Length { get => Sqrt(X * X + Y * Y); }
