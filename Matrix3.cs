@@ -1,31 +1,31 @@
 struct Matrix3
 {
-    public Matrix3(double m11, double m12, double m13, double m21, double m22, double m23, double m31, double m32, double m33, Vector3 shift)
+    public Matrix3(double xx, double xy, double xz, double yx, double yy, double yz, double zx, double zy, double zz, Vector3 shift)
     {
-        M11 = m11;
-        M12 = m12;
-        M13 = m13;
-        M21 = m21;
-        M22 = m22;
-        M23 = m23;
-        M31 = m31;
-        M32 = m32;
-        M33 = m33;
+        XX = xx;
+        XY = xy;
+        XZ = xz;
+        YX = yx;
+        YY = yy;
+        YZ = yz;
+        ZX = zx;
+        ZY = zy;
+        ZZ = zz;
         Shift = shift;
     }
 
-    public double M11 { get; }
-    public double M12 { get; }
-    public double M13 { get; }
-    public double M21 { get; }
-    public double M22 { get; }
-    public double M23 { get; }
-    public double M31 { get; }
-    public double M32 { get; }
-    public double M33 { get; }
+    public double XX { get; }
+    public double XY { get; }
+    public double XZ { get; }
+    public double YX { get; }
+    public double YY { get; }
+    public double YZ { get; }
+    public double ZX { get; }
+    public double ZY { get; }
+    public double ZZ { get; }
     public Vector3 Shift { get; }
     public static Matrix3 operator ~(Matrix3 m)
     {
-        return new(m.M11, m.M12, m.M13, m.M21, m.M22, m.M23, m.M31, m.M32, m.M33, new Vector3(0, 0, 0));
+        return new(m.XX, m.XY, m.XZ, m.YX, m.YY, m.YZ, m.ZX, m.ZY, m.ZZ, new Vector3(0, 0, 0));
     }
 }

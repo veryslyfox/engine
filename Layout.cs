@@ -8,7 +8,7 @@ class Layout
     }
     public IEnumerable<Triangle> Triangles { get; }
     //TODO: Rewrite it with ranges
-    public Layout Cut(Plane plane)
+    public Layout Cut(Plane3 plane)
     {
         
     }

@@ -24,7 +24,7 @@ struct Vector3
     }
     public static Vector3 operator *(Vector3 v, Matrix3 m)
     {
-        return new Vector3(v.X * m.M11 + v.Y * m.M12 + v.Z * m.M13, v.X * m.M21 + v.Y * m.M22 + v.Z * m.M23, v.X * m.M31 + v.Y * m.M32 + v.Z * m.M33) + m.Shift;
+        return new Vector3(v.X * m.XX + v.Y * m.XY + v.Z * m.XZ, v.X * m.YX + v.Y * m.YY + v.Z * m.YZ, v.X * m.ZX + v.Y * m.ZY + v.Z * m.ZZ) + m.Shift;
     }
     public static Vector3 operator -(Vector3 v)
     {
