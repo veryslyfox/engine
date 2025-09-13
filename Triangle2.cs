@@ -5,7 +5,7 @@ struct Triangle2
         A = a;
         B = b;
         C = c;
-        SignedArea = (A > B) | (A > C);
+        SignedArea = ((A > B) | (A > C)) / 2;
         Area = Abs(SignedArea);
         Normal = ~ScaledNormal;
     }
@@ -15,33 +15,29 @@ struct Triangle2
         var ab = 1 - ba;
         return new(a.X * ab + b.X * ba, a.Y * ab + b.Y * ba);
     }
-    public Triangle2 Cut1(Plane3 plane, double av, double bv, double cv)
+    public Triangle2 Cut1(double av, double bv, double cv)
     {
-        return new Triangle2(A, P(A, B, av, bv), (Point3)(!A * (1 - t_ab) + !B * t_ab));
+        return new Triangle2(A, P(A, B, av, bv), P(A, C, av, cv));
     }
-    public Triangle2 Cut2(Plane3 plane, double av, double bv, double cv)
+    public Triangle2 Cut2(double av, double bv, double cv)
     {
-        var t_ba = bv / (bv - av);
-        var t_bc = bv / (bv - cv);
-        return new Triangle2((Point3)(!B * (1 - t_ba) + !A * t_ba), B, (Point3)(!B * (1 - t_bc) + !C * t_bc));
+        return new Triangle2(P(B, A, bv, av), B, P(B, C, bv, cv));
     }
-    public (Triangle2, Triangle2) Cut3(Plane3 plane, double av, double bv, double cv)
+    public (Triangle2, Triangle2) Cut3(double av, double bv, double cv)
     {
-
+        return (new Triangle2(A, B, P(A, C, av, cv)), new Triangle2(A, B, P(B, C, av, cv)));
     }
-    public Triangle3 Cut4(Plane3 plane, double av, double bv, double cv)
+    public Triangle2 Cut4(double av, double bv, double cv)
     {
-        var t_ca = cv / (cv - av);
-        var t_cb = cv / (cv - av);
-        return new Triangle3((Point3)(!C * (1 - t_ca) + !A * t_ca), (Point3)(!C * (1 - t_cb) + !B * t_cb), C);
+        return new Triangle2(P(C, A, cv, av), P(C, B, cv, bv), C);
     }
-    public (Triangle3, Triangle3) Cut5(Plane3 plane, double av, double bv, double cv)
+    public (Triangle2, Triangle2) Cut5(double av, double bv, double cv)
     {
-
+        return (new Triangle2(A, P(A, B, av, cv), C), new Triangle2(A, P(B, C, av, cv), C));
     }
-    public (Triangle3, Triangle3) Cut6(Plane3 plane, double av, double bv, double cv)
+    public (Triangle2, Triangle2) Cut6(double av, double bv, double cv)
     {
-
+        return (new Triangle2(P(A, C, av, cv), B, C), new Triangle2(P(A, B, av, bv), B, C));
     }
     public Point2 A { get; }
     public Point2 B { get; }

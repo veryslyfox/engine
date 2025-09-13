@@ -1,20 +1,18 @@
 class Plane2
 {
-    public Plane2(Vector2 vector)
+    public Plane2(Vector2 vector, double d)
     {
         Vector = vector;
-        Inverse = !vector;
+        D = d;
     }
     public Vector2 Vector { get; }
-    Vector2 Inverse { get; }
-    public bool Orientation { get; }
+    public double D { get; }
     public static Plane2 operator *(Plane2 p, Matrix2 m)
     {
-        var v = p.Vector * ~m;
-        return new Plane2(v * (1 + ~v * m.Shift));
+        return new Plane2(p.Vector * ~m, p.D - p.Vector * m.Shift);
     }
-    public double Compare(Point2 p)
+    public bool Compare(Point2 p)
     {
-        return (1 - (!p * Inverse));
+        return !p * Vector < D;
     }
 }
