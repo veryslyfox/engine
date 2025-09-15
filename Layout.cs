@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-class Layout
+class PolygonalLayout
 {
-    public Layout(Triangle3[] triangles)
+    public PolygonalLayout(Triangle3[] triangles)
     {
         Triangles = triangles;
         ValidLength = Triangles.Length;
@@ -25,9 +25,9 @@ class Layout
     }
     public void Rotate(Matrix3 matrix)
     {
-        foreach (var triangle in Triangles)
+        for (int i = 0; i < ValidLength; i++)
         {
-            triangle.Rotate(matrix);
+            Triangles[i].Rotate(matrix);
         }
     }
 }
