@@ -23,4 +23,11 @@ class Layout
         }
         ValidLength = index;
     }
+    public void Rotate(Matrix3 matrix)
+    {
+        foreach (var triangle in Triangles)
+        {
+            triangle.Rotate(matrix);
+        }
+    }
 }

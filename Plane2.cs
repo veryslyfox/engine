@@ -1,4 +1,4 @@
-class Plane2
+struct Plane2
 {
     public Plane2(Vector2 vector, double d)
     {

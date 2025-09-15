@@ -34,6 +34,10 @@ struct Point3
     {
         return new Vector3(p.X, p.Y, p.Z);
     }
+    public static Point3 operator *(Point3 p, Matrix3 m)
+    {
+        return new Point3(p.X * m.XX + p.Y * m.XY + p.Z * m.XZ, p.X * m.YX + p.Y * m.YY + p.Z * m.YZ, p.X * m.ZX + p.Y * m.ZY + p.Z * m.ZZ) + m.Shift;
+    }
     public double X { get; }
     public double Y { get; }
     public double Z { get; }

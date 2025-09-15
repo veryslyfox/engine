@@ -33,6 +33,10 @@ struct Point2
     {
         return new Vector2(p.X, p.Y);
     }
+    public static Point2 operator *(Point2 p, Matrix2 m)
+    {
+        return new Point2(p.X * m.XX + p.Y * m.XY, p.X * m.YX + p.Y * m.YY) + m.Shift;
+    }
     public double X { get; }
     public double Y { get; }
 }
