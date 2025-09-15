@@ -23,7 +23,7 @@ public partial class MainWindow : Window
         {
             for (int x = 0; x < _bitmap.PixelHeight; x++)
             {
-                var r = 255;
+                var r = x ^ y;
                 var g = 0;
                 var b = 255;
                 var ptr = _bitmap.BackBuffer + x * 4 + _bitmap.BackBufferStride * y;
