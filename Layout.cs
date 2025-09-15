@@ -7,7 +7,7 @@ class Layout
         ValidLength = Triangles.Length;
     }
     public Triangle3[] Triangles { get; }
-    public int ValidLength { get; }
+    public int ValidLength { get; set; }
     public void Cut(Plane3 plane)
     {
         var index = 0;
@@ -21,5 +21,6 @@ class Layout
                 Triangles[i] = Triangles[index];
             }
         }
+        ValidLength = index;
     }
 }
