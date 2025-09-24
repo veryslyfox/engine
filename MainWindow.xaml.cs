@@ -27,10 +27,10 @@ public partial class MainWindow : Window
                 var r = x ^ y;
                 var g = 0;
                 var b = 0;
-                ptr += 4 * (_rng.NextDouble() < 0.02 ? 0 : 1);
+                ptr += 4;
                 unsafe
                 {
-                    *((int*)ptr) = (r << 16) | (g << 8) | b;
+                    *((int*)ptr) = ((r << 16) | (g << 8) | b);
                 }
             }
             ptr = sptr + _bitmap.BackBufferStride;
